@@ -19,8 +19,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/shdubna/discli/cmd"
 	"github.com/google/go-containerregistry/pkg/logs"
+	"github.com/shdubna/discli/cmd"
 )
 
 func init() {

@@ -20,7 +20,6 @@ import (
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 )
 
-
 type platformValue struct {
 	platform *v1.Platform
 }

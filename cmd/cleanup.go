@@ -3,14 +3,14 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"io"
-	"sort"
-	"regexp"
 	"github.com/Masterminds/semver"
 	"github.com/google/go-containerregistry/pkg/crane"
 	"github.com/google/go-containerregistry/pkg/name"
 	"github.com/google/go-containerregistry/pkg/v1/remote"
 	"github.com/spf13/cobra"
+	"io"
+	"regexp"
+	"sort"
 )
 
 // NewCmdCleanup creates a new cobra.Command for the cleanup subcommand.
@@ -48,8 +48,8 @@ func NewCmdCleanup(options *[]crane.Option) *cobra.Command {
 	return cmd
 }
 
-func filterCatalog(ctx context.Context, w io.Writer, src string, rrepo regexp.Regexp, 
-	               rtag regexp.Regexp, keepTags int, dryRun bool, o crane.Options, options *[]crane.Option) error {
+func filterCatalog(ctx context.Context, w io.Writer, src string, rrepo regexp.Regexp,
+	rtag regexp.Regexp, keepTags int, dryRun bool, o crane.Options, options *[]crane.Option) error {
 	reg, err := name.NewRegistry(src, o.Name...)
 
 	if err != nil {

@@ -37,9 +37,9 @@ func NewCmdDelete(options *[]crane.Option) *cobra.Command {
 			if err != nil {
 				return err
 			}
-			ref := fmt.Sprintf("%s/%s@%s", 
-			                   parsed.Context().Registry.Name(), 
-							   parsed.Context().RepositoryStr(), digest)
+			ref := fmt.Sprintf("%s/%s@%s",
+				parsed.Context().Registry.Name(),
+				parsed.Context().RepositoryStr(), digest)
 			return crane.Delete(ref, *options...)
 		},
 	}
