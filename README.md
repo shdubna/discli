@@ -14,34 +14,34 @@ and [crane](https://github.com/google/go-containerregistry/tree/main/cmd/crane).
 1. Get the [latest release](https://github.com/shdubna/discli/releases/latest) version.
 
    ```sh
-   $ VERSION=$(curl -s "https://api.github.com/repos/shdubna/discli/releases/latest" | jq -r '.tag_name')
+   VERSION=$(curl -s "https://api.github.com/repos/shdubna/discli/releases/latest" | jq -r '.tag_name')
    ```
 
    or set a specific version:
 
    ```sh
-   $ VERSION=vX.Y.Z   # Version number with a leading v
+   VERSION=vX.Y.Z   # Version number with a leading v
    ```
 
 2. Download the release.
 
    ```sh
-   $ OS=Linux       # or Darwin, Windows
-   $ ARCH=x86_64    # or arm64, x86_64, armv6
-   $ curl -sL "https://github.com/shdubna/discli/releases/download/${VERSION}/discli_${OS}_${ARCH}.tar.gz" > discli.tar.gz
+   OS=Linux       # or Darwin, Windows
+   ARCH=x86_64    # or arm64, x86_64, armv6
+   curl -sL "https://github.com/shdubna/discli/releases/download/${VERSION}/discli_${OS}_${ARCH}.tar.gz" > discli.tar.gz
    ```
 
 3. Unpack it in the PATH.
 
    ```sh
-   $ tar -zxvf discli.tar.gz -C /usr/local/bin/ discli
+   tar -zxvf discli.tar.gz -C /usr/local/bin/ discli
    ```
 
 ### Options
 
 ```
       --allow-nondistributable-artifacts   Allow pushing non-distributable (foreign) layers
-  -h, --help                               help for crane
+  -h, --help                               help for discli
       --insecure                           Allow image references to be fetched without TLS
       --platform platform                  Specifies the platform in the form os/arch[/variant][:osversion] (e.g. linux/amd64). (default all)
   -v, --verbose                            Enable debug logs
