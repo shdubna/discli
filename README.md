@@ -43,7 +43,7 @@ and [crane](https://github.com/google/go-containerregistry/tree/main/cmd/crane).
       --allow-nondistributable-artifacts   Allow pushing non-distributable (foreign) layers
   -h, --help                               help for discli
       --insecure                           Allow image references to be fetched without TLS
-      --platform platform                  Specifies the platform in the form os/arch[/variant][:osversion] (e.g. linux/amd64). (default all)
+      --platform platform                  Specifies the platform in the form os/arch[/variant][:osversion], or all for all available platforms (e.g. linux/amd64). (default linux/amd64)
   -v, --verbose                            Enable debug logs
 ```
 

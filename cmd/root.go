@@ -17,6 +17,11 @@ package cmd
 import (
 	"crypto/tls"
 	"fmt"
+	"github.com/docker/cli/cli/config"
+	"github.com/google/go-containerregistry/pkg/crane"
+	"github.com/google/go-containerregistry/pkg/logs"
+	"github.com/google/go-containerregistry/pkg/v1/remote"
+	"github.com/spf13/cobra"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -24,12 +29,6 @@ import (
 	"sort"
 	"strings"
 	"sync"
-
-	"github.com/docker/cli/cli/config"
-	"github.com/google/go-containerregistry/pkg/crane"
-	"github.com/google/go-containerregistry/pkg/logs"
-	"github.com/google/go-containerregistry/pkg/v1/remote"
-	"github.com/spf13/cobra"
 )
 
 const (
@@ -73,6 +72,12 @@ func New(use, short string, options []crane.Option) *cobra.Command {
 					binary = filepath.Base(os.Args[0])
 				}
 				options = append(options, crane.WithUserAgent(fmt.Sprintf("%s/%s", binary, Version)))
+			}
+			if platform.platform == nil {
+				platform.platform, _ = parsePlatform("linux/amd64")
+			}
+			if platform.platform.OS == "all" {
+				platform.platform = nil
 			}
 
 			options = append(options, crane.WithPlatform(platform.platform))
@@ -121,7 +126,7 @@ func New(use, short string, options []crane.Option) *cobra.Command {
 	root.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "Enable debug logs")
 	root.PersistentFlags().BoolVar(&insecure, "insecure", false, "Allow image references to be fetched without TLS")
 	root.PersistentFlags().BoolVar(&ndlayers, "allow-nondistributable-artifacts", false, "Allow pushing non-distributable (foreign) layers")
-	root.PersistentFlags().Var(platform, "platform", "Specifies the platform in the form os/arch[/variant][:osversion] (e.g. linux/amd64).")
+	root.PersistentFlags().Var(platform, "platform", "Specifies the platform in the form os/arch[/variant][:osversion], or all for all available platforms (e.g. linux/amd64).")
 
 	return root
 }

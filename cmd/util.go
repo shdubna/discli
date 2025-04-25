@@ -15,8 +15,6 @@
 package cmd
 
 import (
-	// "strings"
-
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 )
 
@@ -43,15 +41,11 @@ func (pv *platformValue) Type() string {
 
 func platformToString(p *v1.Platform) string {
 	if p == nil {
-		return "all"
+		return "linux/amd64"
 	}
 	return p.String()
 }
 
 func parsePlatform(platform string) (*v1.Platform, error) {
-	if platform == "all" {
-		return nil, nil
-	}
-
 	return v1.ParsePlatform(platform)
 }
