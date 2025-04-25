@@ -16,11 +16,10 @@ package main
 
 import (
 	"context"
-	"os"
-	"os/signal"
-
 	"github.com/google/go-containerregistry/pkg/logs"
 	"github.com/shdubna/discli/cmd"
+	"os"
+	"os/signal"
 )
 
 func init() {
