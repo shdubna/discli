@@ -29,3 +29,6 @@ go.work.sum
 
 # idea
 .idea
+
+# Debug binary
+discli
